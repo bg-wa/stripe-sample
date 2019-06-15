@@ -61,3 +61,9 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
+
+
+STRIPE_SECRET = "sk_test_fKQNSEIH1rSUlU2LGlxYni85"
+STRIPE_PUBLIC = "pk_test_Egq0cthjytu3NPY13E1XyBnH"
+
+

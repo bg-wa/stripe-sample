@@ -1,2 +1,31 @@
 <h1>Stripe Integration</h1>
-<%= link_to "My Items", items_path %>
+
+
+<div class="row">
+  	<%@items.each do |item|%>
+	  <div class="col-sm-6">
+	    <div class="card">
+	      <div class="card-body">
+	        <h3><%=item.name%></h3>
+	        <p><strong>Price</strong>: <%=item.price%></p>
+	        <p class="card-text"><%=item.description%></p>
+	        <%if current_user_subscribed?%>
+	        	<h3>subscribed..</h3>
+	        	<%= link_to "Unsubscribe", item_subscriptions_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
+	        <%else%>
+	        	<%= form_tag new_item_subscriptions_path(item), method: :get do %>
+				  	<label for="quantity">Quantity</label>
+					<%= text_field_tag :quantity %>
+					<%= submit_tag "Submit", class: "btn btn-primary" %>
+				<% end %>
+	        <% end %>
+	      </div>
+	    </div>
+	    <br>
+	  </div>
+	<%end%>
+</div>
+
+<br><br>
+<%= link_to "My Items", items_path, class: "btn btn-primary" %>
+

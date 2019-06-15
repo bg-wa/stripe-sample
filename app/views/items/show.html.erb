@@ -15,5 +15,8 @@
   <%= @item.price %>
 </p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%if current_user_subscribed?%>
+	<h1>Enjoy your Subscription...</h1>
+<%else%>
+	<%= link_to "Subscribe To Watch", new_subscription_path, class: "btn btn-primary"%>
+<% end %>
