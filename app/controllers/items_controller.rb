@@ -28,6 +28,26 @@ class ItemsController < ApplicationController
     @item.user_id = current_user.id
     respond_to do |format|
       if @item.save
+
+        #################################################
+        #################################################
+        #################################################
+        # if you want to create new stripe plan on every new item creation in rail app.
+        # you can use below code. 
+        #################################################
+        #################################################
+        #################################################
+
+        # Stripe::Plan.create({
+        #   amount: params['item']['price']*100,
+        #   interval: 'month',
+        #   product: {
+        #     name: params['item']['name'],
+        #   },
+        #   currency: 'usd',
+        #   id: @item.id,
+        # })
+
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
