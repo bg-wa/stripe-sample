@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :coupons
   get 'home/index'
   devise_for :users
   resources :items do

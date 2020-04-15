@@ -7,6 +7,7 @@ class SubscriptionsController < ApplicationController
 
 	def new
 		@quantity = params[:quantity]
+		@coupon_name = params[:coupon_name].present? ? params[:coupon_name] : ""
 	end
 
 	def create
@@ -32,8 +33,10 @@ class SubscriptionsController < ApplicationController
 
 		subscription = customer.subscriptions.create(
 			plan: stripe_plan.id.to_sym,
-			quantity: params[:quantity]
+			quantity: params[:quantity],
+			coupon: params[:coupon_name].present? ? params[:coupon_name]: ""
 		)
+		
 		current_user.update(
 			stripe_id: customer.id,
 			stripe_subscription_id: subscription.id,
