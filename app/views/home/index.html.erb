@@ -14,8 +14,11 @@
 	        	<%= link_to "Unsubscribe", item_subscriptions_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
 	        <%else%>
 	        	<%= form_tag new_item_subscriptions_path(item), method: :get do %>
+				  	<label>Coupon Code</label>
+				  	<%= text_field_tag :coupon_name %><br>
 				  	<label for="quantity">Quantity</label>
 					<%= text_field_tag :quantity %>
+					<br>
 					<%= submit_tag "Submit", class: "btn btn-primary" %>
 				<% end %>
 	        <% end %>

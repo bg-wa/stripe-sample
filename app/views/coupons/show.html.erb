@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @coupon.duration %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @coupon.name %>
+</p>
+
+<p>
+  <strong>Percent off:</strong>
+  <%= @coupon.percent_off %>
+</p>
+
+<%= link_to 'Edit', edit_coupon_path(@coupon) %> |
+<%= link_to 'Back', coupons_path %>
